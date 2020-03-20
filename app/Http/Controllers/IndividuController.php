@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use Session;
 
 use App\Individu;
@@ -24,7 +25,7 @@ class IndividuController extends Controller
     }
 
     /**
-     * Retourne la vue permettant de créer un individu
+     * Affiche la vue permettant de créer un individu
      * 
      */
     public function create()
@@ -61,7 +62,46 @@ class IndividuController extends Controller
     }
 
     /**
-     * Supprimer un individu spécifique de la base
+     * Affiche la vue permettant d'editer un individu
+     * 
+     */
+    public function edit($id)
+    {
+        $individus = Individu::find($id);
+        $annuaires = Annuaire::all();
+        $statuts = Statut::all();
+
+        return view('individu.edit', [
+            'individu' => $individus,
+            'annuaires' => $annuaires,
+            'statuts' => $statuts
+        ]);
+    }
+    
+    /**
+     * Met à jour un individu spécifique
+     * 
+     */
+    public function update($id)
+    {
+        $individu = Individu::find($id);
+        
+        $individu->nom = request('nom');
+        $individu->prenom = request('prenom');
+        $individu->email = request('email');
+        $individu->num = request('num');
+        $individu->statut_id = request('statut');
+        $individu->annuaire_id = request('annuaire');
+
+        $individu->save();
+
+        Session::flash('message', 'Individu modifié avec succès !');
+
+        return redirect()->route('individus.index');
+    }
+
+    /**
+     * Supprime un individu spécifique
      * 
      */
     public function destroy($id)
@@ -73,6 +113,44 @@ class IndividuController extends Controller
 
         return redirect()->route('individus.index');
     }
+
+    /**
+     * Retourne la vue permettant de rechercher un individu
+     * 
+     */
+    public function search()
+    {
+        return view('individu.search');
+    }
+
+    /**
+     * Requête Ajax appellée lors de la recherche
+     * 
+     */
+    public function searchAjax(Request $request)
+    {
+        if ($request->ajax())
+        {
+            $output = "";
+            $individus = DB::table('individus')->where('nom', 'LIKE', '%'.$request->search.'%')->get();
+
+            if ($individus)
+            {
+                foreach ($individus as $key => $individu)
+                {
+                    $output .= '<tr>'.
+                    '<td>'.$individu->nom.'</td>'.
+                    '<td>'.$individu->prenom.'</td>'.
+                    '<td>'.$individu->email.'</td>'.
+                    '<td>'.'<a href="'.url('individus/'.$individu->id.'/edit').'" class="btn btn-info btn-sm" role="button" style="color: white;">modifier</a>'.'</td>'.
+                    '</tr>';
+                }
+                return Response ($output);
+            }
+        }
+    }
+
+
 
 
 }

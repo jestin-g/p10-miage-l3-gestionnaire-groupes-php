@@ -18,3 +18,6 @@ Route::get('/', function () {
 });
 
 Route::resource('individus', 'IndividuController');
+
+Route::get('/search','IndividuController@search');
+Route::get('/search/searchAjax','IndividuController@searchAjax');
