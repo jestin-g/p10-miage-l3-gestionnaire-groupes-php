@@ -143,6 +143,7 @@ class IndividuController extends Controller
                     '<td>'.$individu->prenom.'</td>'.
                     '<td>'.$individu->email.'</td>'.
                     '<td>'.'<a href="'.url('individus/'.$individu->id.'/edit').'" class="btn btn-info btn-sm" role="button" style="color: white;">modifier</a>'.'</td>'.
+                    '<td>'.'<form action="'.route('individus.destroy',[$individu->id]).'" method="POST">'.method_field('DELETE').' '.'<input type="hidden" name="_token" value="'.csrf_token().'">'.'<button type="submit" class="btn btn-danger btn-sm">suppr.</button></form>'.
                     '</tr>';
                 }
                 return Response ($output);
