@@ -67,12 +67,12 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Projet SI L3
+                    {{ config('app.name', 'Laravel') }}
                 </div>
-                <h1 class="display-4">[Insérer nom des élèves]</h1>
+                <h1 class="display-4">Gabriel Jestin · Litissia Ait akli</h1>
 
                 <div class="links">
-                    <a href="{{ url('/individu/index') }}">Accéder à l'application</a>
+                    <a href="{{ url('/individus') }}">Accéder à l'application</a>
                 </div>
             </div>
         </div>

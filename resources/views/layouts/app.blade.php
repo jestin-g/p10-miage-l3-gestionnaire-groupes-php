@@ -53,8 +53,8 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="list-group">
-                                <a href="{{ url('/individu/index') }}" class="list-group-item list-group-item-action list-group-item-primary">Liste des individus</a>
-                                <a href="#" class="list-group-item list-group-item-action">Créer un individu</a>
+                                <a href="{{ url('individus') }}" class="list-group-item list-group-item-action list-group-item-primary">Liste des individus</a>
+                                <a href="{{ url('individus/create') }}" class="list-group-item list-group-item-action">Créer un individu</a>
                                 <a href="#" class="list-group-item list-group-item-action">Modifier un individu</a>
                                 <a href="#" class="list-group-item list-group-item-action">Supprimer un individu</a>
                                 <a href="#" class="list-group-item list-group-item-action list-group-item-info">Liste des groupes</a>
@@ -63,6 +63,9 @@
                                 <a href="#" class="list-group-item list-group-item-action">Ajouter des individus à un groupe</a>
                             </div>
                         </div>
+                        @if (Session::has('message'))
+                        <div class="alert alert-success mt-2">{{ Session::get('message') }}</div>
+                       @endif
                     </div>
                 </div>
             </div>
