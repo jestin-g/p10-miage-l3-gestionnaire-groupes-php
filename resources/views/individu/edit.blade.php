@@ -72,7 +72,7 @@
             <label for="annuaire" class="col-md-4 col-form-label text-md-right">{{ __('Annuaire') }}</label>
             <select id="annuaire" name="annuaire" class="custom-select col-md-6">
                 @foreach ($annuaires as $key => $annuaire)
-            <option value="{{ $annuaire->id }}">{{ $annuaire->libelle }}</option>
+            <option @php if ($annuaire->id == $individu->annuaire->id) {echo ('selected="selected"');} @endphp value="{{ $annuaire->id }}">{{ $annuaire->libelle }}</option>
                 @endforeach
               </select>
               @error('annuaire')
@@ -86,7 +86,7 @@
             <label for="statut" class="col-md-4 col-form-label text-md-right">{{ __('Statut') }}</label>
             <select id="statut" name="statut" class="custom-select col-md-6">
                 @foreach ($statuts as $key => $statut)
-            <option value="{{ $statut->id }}">{{ $statut->libelle }}</option>
+            <option @php if ($statut->id == $individu->statut->id) {echo ('selected="selected"');} @endphp value="{{ $statut->id }}">{{ $statut->libelle }}</option>
                 @endforeach
               </select>
               @error('statut')
