@@ -19,8 +19,8 @@ class CreateIndividusTable extends Migration
             $table->string('prenom');
             $table->string('email');
             $table->string('num');
-            $table->foreignId('statut_id');
-            $table->foreignId('annuaire_id');
+            $table->foreignId('statut_id')->default('1');
+            $table->foreignId('annuaire_id')->default('1');
             $table->timestamps();
         });
     }

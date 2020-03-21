@@ -58,7 +58,18 @@ class IndividuController extends Controller
 
         Session::flash('message', 'Individu créé avec succès !');
 
-        return redirect()->route('individus.index');
+        return redirect()->route('individus.show', $individu->id);
+    }
+
+    /**
+     * Affiche la vue affichant un individu
+     * 
+     */
+    public function show($id)
+    {
+        $individu = Individu::find($id);
+
+        return view('individu.show', compact('individu'));
     }
 
     /**
@@ -97,7 +108,7 @@ class IndividuController extends Controller
 
         Session::flash('message', 'Individu modifié avec succès !');
 
-        return redirect()->route('individus.index');
+        return redirect()->route('individus.show', $individu->id);
     }
 
     /**

@@ -10,7 +10,7 @@
                     <th scope="col">Prénom</th>
                     <th scope="col">Email</th>
                     <th scope="col">Statut</th>
-                    <th colspan="2" class="text-center">Actions</th>
+                    <th colspan="3" class="text-center">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -21,9 +21,8 @@
                     <td>{{ $individu->prenom }}</td>
                     <td>{{ $individu->email }}</td>
                     <td>{{ $individu->statut->libelle }}</td>
-                    <td>
-                    <a href="{{ url('individus/'.$individu->id.'/edit') }}" class="btn btn-info btn-sm" role="button" style="color: white;">modifier</a>
-                    </td>
+                    <td><a href="{{ url('individus/'.$individu->id) }}" class="btn btn-success btn-sm" role="button" style="color: white;">afficher</a></td>
+                    <td><a href="{{ url('individus/'.$individu->id.'/edit') }}" class="btn btn-info btn-sm" role="button" style="color: white;">modifier</a></td>
                     <td>
                       <form action="{{route('individus.destroy',[$individu->id])}}" method="POST">
                         @method('DELETE')
