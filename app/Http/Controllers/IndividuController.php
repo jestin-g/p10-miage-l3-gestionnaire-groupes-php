@@ -78,12 +78,12 @@ class IndividuController extends Controller
      */
     public function edit($id)
     {
-        $individus = Individu::find($id);
+        $individu = Individu::find($id);
         $annuaires = Annuaire::all();
         $statuts = Statut::all();
 
         return view('individu.edit', [
-            'individu' => $individus,
+            'individu' => $individu,
             'annuaires' => $annuaires,
             'statuts' => $statuts
         ]);
