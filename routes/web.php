@@ -23,6 +23,7 @@ Route::get('/', function () {
  */
 Route::resource('individus', 'IndividuController');
 Route::resource('groups', 'GroupController');
+Route::resource('appartenances', 'AppartenanceController');
 
 /**
  * Routes pour la recherche d'individus dynamique

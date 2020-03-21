@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Session;
+use DB;
+
+use App\Group;
+use App\Individu;
+use App\Appartenance;
+
 class GroupController extends Controller
 {
     /**
@@ -40,7 +47,7 @@ class GroupController extends Controller
 
         Session::flash('message', 'Groupe créé avec succès !');
 
-        return redirect()->route('group.index');
+        return redirect()->route('groups.index');
     }
 
     /**
@@ -51,7 +58,16 @@ class GroupController extends Controller
     {
         $group = Group::find($id);
 
-        return view('group.show', compact('group'));
+        $query = DB::table('individus')
+        ->select('individus.id as ind_id', 'nom', 'prenom', 'prenom', 'appartenances.id as app_id')
+        ->join('appartenances', 'individus.id', '=', 'appartenances.individu_id')
+        ->where('appartenances.groupe_id', '=', $id)
+        ->get();
+
+        return view('group.show', [
+            'group' => $group,
+            'query' => $query
+        ]);
     }
 
     /**
@@ -79,7 +95,7 @@ class GroupController extends Controller
 
         Session::flash('message', 'Groupe modifié avec succès !');
 
-        return redirect()->route('group.index');
+        return redirect()->route('groups.index');
     }
 
     /**
@@ -93,6 +109,6 @@ class GroupController extends Controller
 
         Session::flash('message', "Groupe supprimé avec succès !");
 
-        return redirect()->route('group.index');
+        return redirect()->route('groups.index');
     }
 }

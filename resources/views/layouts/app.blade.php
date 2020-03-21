@@ -57,9 +57,8 @@
                                 <a href="{{ url('individus') }}" class="list-group-item list-group-item-action">Liste des individus</a>
                                 <a href="{{ url('individus/create') }}" class="list-group-item list-group-item-action">Créer un individu</a>
                                 <a href="{{ url('search') }}" class="list-group-item list-group-item-action">Rechercher un individu</a>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-info">Liste des groupes</a>
-                                <a href="#" class="list-group-item list-group-item-action">Créer un groupe</a>
-                                <a href="#" class="list-group-item list-group-item-action">Supprimer un groupe</a>
+                                <a href="{{ url('groups') }}" class="list-group-item list-group-item-action list-group-item-info">Liste des groupes</a>
+                                <a href="{{ url('groups/create') }}" class="list-group-item list-group-item-action">Créer un groupe</a>
                                 <a href="#" class="list-group-item list-group-item-action">Ajouter des individus à un groupe</a>
                             </div>
                         </div>
