@@ -17,7 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * Routes pour gérer les différentes ressources (store, index, create, show, create, destroy, edit)
+ * 
+ */
 Route::resource('individus', 'IndividuController');
+Route::resource('groups', 'GroupController');
 
+/**
+ * Routes pour la recherche d'individus dynamique
+ * 
+ */
 Route::get('/search','IndividuController@search');
 Route::get('/search/searchAjax','IndividuController@searchAjax');
