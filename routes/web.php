@@ -26,14 +26,20 @@ Route::resource('groups', 'GroupController');
 Route::resource('appartenances', 'AppartenanceController');
 
 /**
+ * Route pour personalisé pour afficher un group (J'ai besoin de l'année demandée en plus de l'id)
+ * 
+ */
+Route::get('groups/{id}/{annee}', 'GroupController@show')->name('groups.show2');
+
+/**
+ * Routes pour les exportations / importations de fichiers csv
+ * 
+ */
+Route::get('fichier/import', 'FichierController@index');
+
+/**
  * Routes pour la recherche d'individus dynamique
  * 
  */
 Route::get('/search','IndividuController@search');
 Route::get('/search/searchAjax','IndividuController@searchAjax');
-
-/**
- * Route pour personalisé pour afficher un group (J'ai besoin de l'année demandée en plus de l'id)
- * 
- */
-Route::get('groups/{id}/{annee}', 'GroupController@show')->name('groups.show2');;
