@@ -54,7 +54,7 @@ class GroupController extends Controller
      * Affiche la vue affichant un groupe
      * 
      */
-    public function show($id)
+    public function show($id, $annee)
     {
         $group = Group::find($id);
 
@@ -62,11 +62,14 @@ class GroupController extends Controller
         ->select('individus.id as ind_id', 'nom', 'prenom', 'prenom', 'appartenances.id as app_id')
         ->join('appartenances', 'individus.id', '=', 'appartenances.individu_id')
         ->where('appartenances.groupe_id', '=', $id)
+        ->where('appartenances.annee', $annee.'-01-01')
+        ->orderBy('nom', 'asc')
         ->get();
 
         return view('group.show', [
             'group' => $group,
-            'query' => $query
+            'query' => $query,
+            'annee_affichee' => $annee
         ]);
     }
 
@@ -104,10 +107,15 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        $group = Group::find($id);
-        $group->delete();
+        /**
+         * La supression des groupes est désactivée
+         * 
+         */
+        //$group = Group::find($id);
+        //$group->delete();
 
-        Session::flash('message', "Groupe supprimé avec succès !");
+        Session::flash('message', "La supression des groupes est désactivée !");
+        Session::flash('danger', 1);
 
         return redirect()->route('groups.index');
     }

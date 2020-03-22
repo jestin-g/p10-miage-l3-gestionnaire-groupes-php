@@ -53,17 +53,23 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="list-group">
-                                <a class="list-group-item list-group-item-action list-group-item-primary" disabled>Individus</a>
+                                <a class="list-group-item list-group-item-primary" disabled>Individus</a>
                                 <a href="{{ url('individus') }}" class="list-group-item list-group-item-action">Liste des individus</a>
                                 <a href="{{ url('individus/create') }}" class="list-group-item list-group-item-action">Créer un individu</a>
                                 <a href="{{ url('search') }}" class="list-group-item list-group-item-action">Rechercher un individu</a>
-                                <a href="{{ url('groups') }}" class="list-group-item list-group-item-action list-group-item-info">Liste des groupes</a>
+
+                                <a class="list-group-item list-group-item-primary" disabled>Groupes</a>
+                                <a href="{{ url('groups') }}" class="list-group-item list-group-item-action">Liste des groupes</a>
                                 <a href="{{ url('groups/create') }}" class="list-group-item list-group-item-action">Créer un groupe</a>
-                                <a href="#" class="list-group-item list-group-item-action">Ajouter des individus à un groupe</a>
+                                <a href="{{ url('appartenances/create') }}" class="list-group-item list-group-item-action">Ajouter des individus à un groupe</a>
                             </div>
                         </div>
                         @if (Session::has('message'))
-                        <div class="alert alert-success mt-2">{{ Session::get('message') }}</div>
+                            @if (Session::has('danger'))
+                            <div class="alert alert-danger mt-2">{{ Session::get('message') }}</div>
+                            @else
+                            <div class="alert alert-success mt-2">{{ Session::get('message') }}</div>
+                            @endif
                        @endif
                     </div>
                 </div>

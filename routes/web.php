@@ -31,3 +31,9 @@ Route::resource('appartenances', 'AppartenanceController');
  */
 Route::get('/search','IndividuController@search');
 Route::get('/search/searchAjax','IndividuController@searchAjax');
+
+/**
+ * Route pour modifier show de group (ajout du paramètre année)
+ * 
+ */
+Route::get('groups/{id}/{annee}', 'GroupController@show')->name('groups.show2');;
