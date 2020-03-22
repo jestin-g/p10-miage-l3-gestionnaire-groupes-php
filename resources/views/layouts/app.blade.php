@@ -62,6 +62,8 @@
                                 <a href="{{ url('groups') }}" class="list-group-item list-group-item-action">Liste des groupes</a>
                                 <a href="{{ url('groups/create') }}" class="list-group-item list-group-item-action">Créer un groupe</a>
                                 <a href="{{ url('appartenances/create') }}" class="list-group-item list-group-item-action">Ajouter des individus à un groupe</a>
+
+                                <a href="#" class="list-group-item list-group-item-secondary  list-group-item-action">Importation</a>
                             </div>
                         </div>
                         @if (Session::has('message'))

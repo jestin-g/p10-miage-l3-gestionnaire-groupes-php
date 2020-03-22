@@ -16,7 +16,7 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $group->libelle }}</td>
                     <td><a href="{{ url('groups/'.$group->id.'/'.\Carbon\Carbon::now()->format('Y')) }}" class="btn btn-success btn-sm" role="button" style="color: white;">afficher</a></td>
-                    <td><a href="{{ url('groups/'.$group->id.'/edit') }}" class="btn btn-info btn-sm" role="button" style="color: white;">modifier</a></td>
+                    <td><a href="{{route('groups.edit', $group->id)}}" class="btn btn-info btn-sm" role="button" style="color: white;">modifier</a></td>
                     <td>
                       <form action="{{route('groups.destroy',[$group->id])}}" method="POST">
                         @method('DELETE')

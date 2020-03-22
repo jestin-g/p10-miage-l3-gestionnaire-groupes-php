@@ -81,7 +81,7 @@ class GroupController extends Controller
     {
         $group = Group::find($id);
 
-        return view('group.edit', compact($group));
+        return view('group.edit', compact('group'));
     }
     
     /**
