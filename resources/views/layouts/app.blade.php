@@ -62,8 +62,12 @@
                                 <a href="{{ url('groups') }}" class="list-group-item list-group-item-action">Liste des groupes</a>
                                 <a href="{{ url('groups/create') }}" class="list-group-item list-group-item-action">Créer un groupe</a>
                                 <a href="{{ url('appartenances/create') }}" class="list-group-item list-group-item-action">Ajouter des individus à un groupe</a>
+                                
+                                <a class="list-group-item list-group-item-primary" disabled>Exportation</a>
+                                <a href="{{ url('export') }}" class="list-group-item  list-group-item-action">Exporter un groupe</a>
+                                <a href="{{ url('fichier/export_xls') }}" class="list-group-item  list-group-item-action">Exporter tous les individus (xls)</a>
+                                <a href="{{ url('fichier/export_csv') }}" class="list-group-item  list-group-item-action">Exporter tous les individus (csv)</a>
 
-                            <a href="{{ url('fichier/import') }}" class="list-group-item list-group-item-secondary  list-group-item-action">Importation</a>
                             </div>
                         </div>
                         @if (Session::has('message'))

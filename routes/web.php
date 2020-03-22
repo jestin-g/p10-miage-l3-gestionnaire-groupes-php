@@ -35,7 +35,11 @@ Route::get('groups/{id}/{annee}', 'GroupController@show')->name('groups.show2');
  * Routes pour les exportations / importations de fichiers csv
  * 
  */
-Route::get('fichier/import', 'FichierController@index');
+Route::get('fichier/export_xls', 'FichierController@export_all_xls');
+Route::get('fichier/export_csv', 'FichierController@export_all_csv');
+Route::get('export', 'GroupController@export')->name('export');
+Route::get('export/xls', 'GroupController@export_group')->name('export_xls');
+
 
 /**
  * Routes pour la recherche d'individus dynamique

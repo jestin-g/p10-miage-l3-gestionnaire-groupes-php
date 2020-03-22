@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 
+use App\Exports\GroupExport;
+
 use App\Group;
 use App\Individu;
 use App\Appartenance;
+
 
 class GroupController extends Controller
 {
@@ -59,7 +62,7 @@ class GroupController extends Controller
         $group = Group::find($id);
 
         $query = DB::table('individus')
-        ->select('individus.id as ind_id', 'nom', 'prenom', 'prenom', 'appartenances.id as app_id')
+        ->select('individus.id as ind_id', 'nom', 'prenom', 'appartenances.id as app_id')
         ->join('appartenances', 'individus.id', '=', 'appartenances.individu_id')
         ->where('appartenances.groupe_id', '=', $id)
         ->where('appartenances.annee', $annee.'-01-01')
@@ -118,5 +121,27 @@ class GroupController extends Controller
         Session::flash('danger', 1);
 
         return redirect()->route('groups.index');
+    }
+
+    /**
+     * Affiche la vue affichant le formulaire d'exportation
+     * 
+     */
+    public function export()
+    {
+        $groups = Group::orderBy('libelle', 'asc')->get();
+
+        return view('group.export', compact('groups'));
+    }
+
+    /**
+     * Exporter en Excel le groupe
+     * 
+     */
+    public function export_group()
+    {
+        $id = request('groupe_id');
+        $annee = request('annee');
+        return (new GroupExport($id, $annee))->download('groupe_'.$id.'_'.$annee.'_'.($annee+1).'.xlsx');
     }
 }
