@@ -27,7 +27,7 @@ Générer une clef pour l'application
 
     php artisan key:generate
 
-Lancer les migrations pour la base de données (**Paramétrer la connexion à la vase dans le fichier .env avant de lancer les migrations**)
+Lancer les migrations pour la base de données (**Paramétrer la connexion à la base dans le fichier .env avant de lancer les migrations**)
 
     php artisan migrate
 
