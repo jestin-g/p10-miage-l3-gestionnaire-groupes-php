@@ -110,15 +110,13 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        /**
-         * La supression des groupes est désactivée
-         * 
-         */
-        //$group = Group::find($id);
-        //$group->delete();
+        $appartenances = Appartenance::where('groupe_id', $id);
+        $appartenances->delete();
 
-        Session::flash('message', "La supression des groupes est désactivée !");
-        Session::flash('danger', 1);
+        $group = Group::find($id);
+        $group->delete();
+
+        Session::flash('message', "Le groupe a bien été supprimé !");
 
         return redirect()->route('groups.index');
     }
