@@ -17,10 +17,10 @@
   @foreach ($individus as $key => $individu)
     <tr>
       <th scope="row">{{ $loop->iteration }}</th>
-      <td>{{ $individu->nom }}</td>
-      <td>{{ $individu->prenom }}</td>
-      <td>{{ $individu->email }}</td>
-      <td>{{ $individu->statut->libelle }}</td>
+      <td>{{ $individu->nom ?? 'erreur' }}</td>
+      <td>{{ $individu->prenom ?? 'erreur' }}</td>
+      <td>{{ $individu->email ?? 'erreur' }}</td>
+      <td>{{ $individu->statut->libelle ?? 'erreur' }}</td>
       <td><a href="{{ url('individus/'.$individu->id) }}" class="btn btn-success btn-sm" role="button" style="color: white;">afficher</a></td>
       <td><a href="{{ url('individus/'.$individu->id.'/edit') }}" class="btn btn-info btn-sm" role="button" style="color: white;">modifier</a></td>
       <td>

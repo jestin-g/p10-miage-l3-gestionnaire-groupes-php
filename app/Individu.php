@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Individu extends Model
 {
-    protected $fillable = ['nom', 'prenom', 'email', 'num', 'statu_id', 'annuaire_id'];
+    protected $fillable = ['nom', 'prenom', 'email', 'num', 'statut_id', 'annuaire_id'];
 
     public function statut()
     {
