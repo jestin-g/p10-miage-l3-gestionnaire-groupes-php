@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Projet SI L3 MIAGE APP 2020'),
+    'name' => 'Projet SI L3 MIAGE APP 2020',
 
     /*
     |--------------------------------------------------------------------------
