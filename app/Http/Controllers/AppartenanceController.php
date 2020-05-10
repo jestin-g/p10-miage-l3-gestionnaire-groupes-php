@@ -55,7 +55,8 @@ class AppartenanceController extends Controller
 
         return redirect()->route('groups.show2', [
             'id' => $appartenance->groupe_id,
-            'annee' => \Carbon\Carbon::parse($appartenance->annee)->format('Y')]);
+            'annee' => \Carbon\Carbon::parse($appartenance->annee)->format('Y')
+        ]);
     }
 
     /**
@@ -70,6 +71,9 @@ class AppartenanceController extends Controller
 
         $appartenance->delete();
 
-        return redirect()->route('groups.show', $id_group);
+        return redirect()->route('groups.show2', [
+            'id' => $id_group,
+            'annee' => \Carbon\Carbon::parse($appartenance->annee)->format('Y')
+        ]);
     }
 }
