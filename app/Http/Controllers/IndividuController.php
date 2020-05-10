@@ -143,7 +143,10 @@ class IndividuController extends Controller
         if ($request->ajax())
         {
             $output = "";
-            $individus = DB::table('individus')->where('nom', 'LIKE', '%'.$request->search.'%')->get();
+            $individus = DB::table('individus')
+                ->where('nom', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('prenom', 'LIKE', '%'.$request->search.'%')
+                ->get();
 
             if ($individus)
             {
