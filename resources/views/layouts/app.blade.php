@@ -61,7 +61,7 @@
                                 <a class="list-group-item list-group-item-primary" disabled>Groupes</a>
                                 <a href="{{ url('groups') }}" class="list-group-item list-group-item-action">Liste des groupes</a>
                                 <a href="{{ url('groups/create') }}" class="list-group-item list-group-item-action">Créer un groupe</a>
-                                <a href="{{ url('appartenances/create') }}" class="list-group-item list-group-item-action">Ajouter des individus à un groupe</a>
+                                <a href="{{ url('appartenances/create') }}" class="list-group-item list-group-item-action">Ajouter un individu à un groupe</a>
                                 
                                 <a class="list-group-item list-group-item-primary" disabled>Exportation</a>
                                 <a href="{{ url('export') }}" class="list-group-item  list-group-item-action">Exporter un groupe</a>
