@@ -8,7 +8,6 @@ use Session;
 use DB;
 
 use App\Exports\GroupExport;
-
 use App\Group;
 use App\Individu;
 use App\Appartenance;
@@ -62,12 +61,12 @@ class GroupController extends Controller
         $group = Group::find($id);
 
         $query = DB::table('individus')
-        ->select('individus.id as ind_id', 'nom', 'prenom', 'appartenances.id as app_id')
-        ->join('appartenances', 'individus.id', '=', 'appartenances.individu_id')
-        ->where('appartenances.groupe_id', '=', $id)
-        ->where('appartenances.annee', $annee.'-01-01')
-        ->orderBy('nom', 'asc')
-        ->get();
+            ->select('individus.id as ind_id', 'nom', 'prenom', 'appartenances.id as app_id')
+            ->join('appartenances', 'individus.id', '=', 'appartenances.individu_id')
+            ->where('appartenances.groupe_id', '=', $id)
+            ->where('appartenances.annee', $annee.'-01-01')
+            ->orderBy('nom', 'asc')
+            ->get();
 
         return view('group.show', [
             'group' => $group,
@@ -140,6 +139,8 @@ class GroupController extends Controller
     {
         $id = request('groupe_id');
         $annee = request('annee');
-        return (new GroupExport($id, $annee))->download('groupe_'.$id.'_'.$annee.'_'.($annee+1).'.xlsx');
+        $group = Group::find($id);
+
+        return (new GroupExport($id, $annee))->download($group->libelle.'_'.$annee.'_'.($annee+1).'.xlsx');
     }
 }
