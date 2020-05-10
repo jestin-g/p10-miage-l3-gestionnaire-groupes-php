@@ -30,7 +30,11 @@ Générer une clef pour l'application
 Lancer les migrations pour la base de données (**Paramétrer la connexion à la base dans le fichier .env avant de lancer les migrations**)
 
     php artisan migrate
+    
+Lancer les Seeder de la base de données
 
+    php artisan db:seed
+    
 Lancer le serveur de développement local
 
     php artisan serve
