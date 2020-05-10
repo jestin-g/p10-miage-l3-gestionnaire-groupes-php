@@ -26,7 +26,7 @@ Route::resource('groups', 'GroupController');
 Route::resource('appartenances', 'AppartenanceController');
 
 /**
- * Route pour personalisé pour afficher un group (J'ai besoin de l'année demandée en plus de l'id)
+ * Route personalisée pour afficher un group (J'ai besoin de l'année demandée en plus de l'id)
  * 
  */
 Route::get('groups/{id}/{annee}', 'GroupController@show')->name('groups.show2');
@@ -42,7 +42,7 @@ Route::get('export/xls', 'GroupController@export_group')->name('export_xls');
 
 
 /**
- * Routes pour la recherche d'individus dynamique
+ * Routes pour la recherche dynamique d'individus
  * 
  */
 Route::get('/search','IndividuController@search');
