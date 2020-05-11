@@ -126,6 +126,27 @@ class IndividuController extends Controller
     }
 
     /**
+     * Return all individus as JSON
+     * 
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showAll()
+    {
+        return response()->json(Individu::all());
+    }
+
+    /**
+     * Return the specified individus as JSON
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showOne($id)
+    {
+        return response()->json(Individu::find($id));
+    }
+
+    /**
      * Retourne la vue permettant de rechercher un individu
      * 
      */
