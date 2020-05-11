@@ -47,3 +47,16 @@ Route::get('export/xls', 'GroupController@export_group')->name('export_xls');
  */
 Route::get('/search','IndividuController@search');
 Route::get('/search/searchAjax','IndividuController@searchAjax');
+
+/**
+  * API Routes
+  *
+  */
+Route::group(['prefix' => 'api'], function () {
+    Route::get('/', function() {
+        return view('api.index');
+    });
+    Route::get('individu', 'IndividuController@showAll');
+    Route::get('individu/{id}', 'IndividuController@showOne');
+    Route::get('group/{id}/{annee}', 'GroupController@showOne');
+});
