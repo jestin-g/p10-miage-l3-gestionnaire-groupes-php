@@ -121,6 +121,22 @@ class GroupController extends Controller
     }
 
     /**
+     * Return the specified group as JSON
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showOne($id, $annee)
+    {
+        $groups = DB::table('individus')
+            ->join('appartenances', 'individus.id', '=', 'appartenances.individu_id')
+            ->where('appartenances.groupe_id', '=', $id)
+            ->where('appartenances.annee', '=', $annee.'-01-01')
+            ->get();
+        return response()->json($groups);
+    }
+
+    /**
      * Affiche la vue affichant le formulaire d'exportation
      * 
      */
