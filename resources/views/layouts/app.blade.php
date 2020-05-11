@@ -67,6 +67,8 @@
                                 <a href="{{ url('export') }}" class="list-group-item  list-group-item-action">Exporter un groupe</a>
                                 <a href="{{ url('fichier/export_xls') }}" class="list-group-item  list-group-item-action">Exporter tous les individus (xls)</a>
                                 <a href="{{ url('fichier/export_csv') }}" class="list-group-item  list-group-item-action">Exporter tous les individus (csv)</a>
+                                
+                                <a href="{{ url('api') }}" class="list-group-item list-group-item-secondary list-group-item-action">API</a>
 
                             </div>
                         </div>
